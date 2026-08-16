@@ -11,12 +11,12 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Build APK with buildozer
-        uses: Artemiz/buildozer-action@v1
+      - name: Build APK
+        uses: ArtemSBulgakov/buildozer-action@v1
         with:
           buildozer_target: android debug
 
-      - name: Upload generated APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: output-apk
