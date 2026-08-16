@@ -1,17 +1,23 @@
 name: Build Android APK
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
+
       - name: Build APK with buildozer
-        uses: kivy/buildozer-action@v1
+        uses: Artemiz/buildozer-action@v1
         with:
           buildozer_target: android debug
-      - name: Upload APK artifact
+
+      - name: Upload generated APK
         uses: actions/upload-artifact@v4
         with:
-          path: ./bin/*.apk
+          name: output-apk
+          path: bin/*.apk
